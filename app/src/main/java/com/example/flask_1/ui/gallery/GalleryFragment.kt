@@ -1,4 +1,4 @@
-package com.example.flask_1.ui.gallery
+package com.example.navigation.ui.gallery
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.flask_1.databinding.FragmentGalleryBinding
-import com.example.navigation.ui.gallery.GalleryViewModel
 
 class GalleryFragment : Fragment() {
 
