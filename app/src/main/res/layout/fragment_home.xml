@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/img_uploaded"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/btn_upload_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_uploaded"
+        android:layout_marginTop="16dp"
+        android:text="Upload Image" />
+
+    <Button
+        android:id="@+id/btn_convert_ocr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_upload_image"
+        android:layout_marginTop="16dp"
+        android:text="Convert to OCR"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_convert_ocr"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/text_generated_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generated Questions"
+            android:textSize="16sp"
+            android:visibility="visible" />
+    </ScrollView>
+
+</RelativeLayout>
