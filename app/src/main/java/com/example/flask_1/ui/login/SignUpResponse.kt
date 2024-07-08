@@ -1,4 +1,4 @@
-package com.example.flask_1
+package com.example.flask_1.ui.login
 
 data class LoginRequest(val username: String, val password: String)
 data class LoginResponse(val message: String)

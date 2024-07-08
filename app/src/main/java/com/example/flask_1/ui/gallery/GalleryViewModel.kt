@@ -1,4 +1,4 @@
-package com.example.navigation.ui.gallery
+package com.example.flask_1.ui.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
