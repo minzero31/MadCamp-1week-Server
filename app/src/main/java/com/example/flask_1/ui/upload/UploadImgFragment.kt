@@ -1,4 +1,4 @@
-package com.example.navigation.ui.upload
+package com.example.flask_1.ui.upload
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -16,9 +16,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.flask_1.OcrResponse
+import com.example.flask_1.ui.login.OcrResponse
 import com.example.flask_1.R
-import com.example.flask_1.RetrofitClient
+import com.example.flask_1.ui.login.RetrofitClient
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import retrofit2.Call

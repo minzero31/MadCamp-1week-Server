@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/uploadImgFragment"
-        android:name="com.example.navigation.ui.upload.UploadImgFragment"
+        android:name="com.example.flask_1.ui.upload.UploadImgFragment"
         android:label="UploadImgFragment" >
         <action
             android:id="@+id/action_uploadImgFragment_to_loadingFragment"
