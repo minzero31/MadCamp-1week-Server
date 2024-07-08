@@ -1,4 +1,4 @@
-package com.example.navigation.ui.slideshow
+package com.example.flask_1.ui.slideshow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

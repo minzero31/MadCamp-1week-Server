@@ -1,4 +1,4 @@
-package com.example.navigation.ui.home
+package com.example.flask_1.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

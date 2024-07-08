@@ -1,4 +1,4 @@
-package com.example.flask_1
+package com.example.flask_1.ui.login
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.flask_1.MainActivity
+import com.example.flask_1.R
 import com.example.flask_1.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback

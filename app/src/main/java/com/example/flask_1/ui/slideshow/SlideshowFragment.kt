@@ -1,4 +1,4 @@
-package com.example.navigation.ui.slideshow
+package com.example.flask_1.ui.slideshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
