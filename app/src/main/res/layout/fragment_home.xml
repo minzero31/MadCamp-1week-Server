@@ -3,47 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
-    tools:context=".ui.home.HomeFragment">
+    tools:context="com.example.navigation.ui.home.HomeFragment">
 
-    <ImageView
-        android:id="@+id/img_uploaded"
+    <!-- 상단 라운드 박스 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_create_question"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_height="100dp"
+        android:layout_marginBottom="32dp"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
 
-    <Button
-        android:id="@+id/btn_upload_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_uploaded"
-        android:layout_marginTop="16dp"
-        android:text="Upload Image" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_light">
 
-    <Button
-        android:id="@+id/btn_convert_ocr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_upload_image"
-        android:layout_marginTop="16dp"
-        android:text="Convert to OCR"
-        android:visibility="gone" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_convert_ocr"
-        android:layout_marginTop="16dp">
+            <ImageView
+                android:id="@+id/icon_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_add"
+                android:contentDescription="@string/add_icon_desc" />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/text_generated_questions"
+            android:id="@+id/text_create_question"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Generated Questions"
-            android:textSize="16sp"
-            android:visibility="visible" />
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:text="나만의 문제를 생성하세요!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center|bottom"
+            android:padding="16dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- 내가 만든 문제 타이틀 -->
+    <TextView
+        android:id="@+id/text_my_questions_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내가 만든 문제"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/card_create_question"
+        android:layout_marginTop="32dp"
+        android:padding="16dp" />
+
+    <!-- 카드 뷰를 포함하는 리사이클러 뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_my_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_my_questions_title"
+        android:layout_marginTop="16dp"
+        android:scrollbars="horizontal" />
 
 </RelativeLayout>
