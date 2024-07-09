@@ -37,6 +37,15 @@ class SlideshowFragment : Fragment() {
         val btnViewMyQuestions: Button = binding.btnViewMyQuestions
         val btnLogout: Button = binding.btnLogout
 
+        // Retrieve user details from SharedPreferences
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", "Unknown User")
+        val email = sharedPreferences.getString("email", "unknown@example.com")
+
+        // Set user details
+        userId.text = "아이디: $username"
+        userEmail.text = "이메일: $email"
+
         // Set any specific properties or listeners
         btnViewMyQuestions.setOnClickListener {
             showConfirmationDialog("내가 만든 퀴즈를 보러가시겠습니까?")
