@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.databinding.FragmentGalleryBinding
-import com.example.flask_1.ui.gallery.RecyclerAdapter
+import com.example.week2test.ui.gallery.RecyclerAdapter
 
 class GalleryFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.flask_1.ui.gallery
+package com.example.week2test.ui.gallery
 
 import android.app.AlertDialog
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.databinding.ItemRecyclerBinding
 import com.example.flask_1.databinding.DialogDetailBinding
+import com.example.flask_1.ui.gallery.Users
 
 class RecyclerAdapter(private val userList: ArrayList<Users>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 

@@ -47,7 +47,7 @@
                         android:id="@+id/name_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="20sp"
                         android:text="가나다" />
 
                     <TextView
@@ -63,12 +63,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_below="@+id/imageIcon">
-                    <TextView
-                        android:id="@+id/content_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="가나다라"
-                        android:textSize="15sp"/>
                 </LinearLayout>
 
             </RelativeLayout>
