@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.slideshow.SlideshowFragment"
+    android:paddingTop="50dp"
     android:padding="16dp">
 
     <androidx.cardview.widget.CardView
@@ -16,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="274dp"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -25,34 +26,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="my 정보"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="8dp"
+                android:text="나의 정보"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/user_icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_user_icon"
-                android:paddingBottom="16dp"/>
+                android:paddingBottom="16dp"
+                android:src="@drawable/ic_user_icon" />
 
             <TextView
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp"
                 android:text="아이디: 우하하하하하하"
-                android:textSize="16sp"
-                android:paddingBottom="4dp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingBottom="16dp"
                 android:text="이메일: 우하하하하"
-                android:textSize="16sp"
-                android:paddingBottom="16dp"/>
+                android:textSize="20sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
