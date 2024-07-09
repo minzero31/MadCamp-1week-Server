@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">flask_1</string>
+    <string name="app_name">고사리</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,9 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">나만의 문제 만들기</string>
+    <string name="menu_gallery">공유 문제 풀기</string>
+    <string name="menu_slideshow">마이페이지</string>
     <string name="add_icon_desc">Create Problems</string>
     <string name="question_image_desc">Question Image</string>
+
+
 </resources>

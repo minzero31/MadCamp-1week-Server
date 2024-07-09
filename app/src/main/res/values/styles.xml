@@ -2,26 +2,26 @@
 <resources>
     <!-- Base application theme -->
     <style name="Theme.Flask_1" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">@color/deeper_green</item>
+        <item name="colorPrimaryDark">@color/deeper_green</item>
+        <item name="colorAccent">@color/menta</item>
     </style>
 
     <!-- No Action Bar Theme -->
     <style name="Theme.Flask_1.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">@color/deeper_green</item>
+        <item name="colorPrimaryDark">@color/deeper_green</item>
+        <item name="colorAccent">@color/menta</item>
     </style>
 
     <style name="Theme.Navigation" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/deeper_green</item>
+        <item name="colorPrimaryVariant">@color/deeper_green</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/menta</item>
+        <item name="colorSecondaryVariant">@color/menta</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

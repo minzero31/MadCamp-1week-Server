@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
+    <color name="light_green">#E9F5DE</color>
+    <color name="deep_green">#1DA778</color>
+    <color name="deeper_green">#158E4F</color>
+    <color name="emerald">#85D4BE</color>
+    <color name="primavera">#8BC758</color>
+    <color name="menta">#A6D8B7</color>
+    <color name="cesped">#75B154</color>
+
 </resources>
