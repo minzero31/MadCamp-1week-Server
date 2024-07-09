@@ -1,27 +1,27 @@
-package com.example.navigation.ui
+package com.example.navigation.ui.problem
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.R
 import com.example.flask_1.ui.login.ExamData
 import com.example.flask_1.ui.login.ProblemData
 import com.example.flask_1.ui.login.RetrofitClient
 import com.example.flask_1.ui.login.SaveExamResponse
-import com.example.navigation.ui.problem.Problem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProblemAdapter(private val problems: List<Problem>, private val onCheckAnswersClick: () -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProblemAdapter(
+    private val problems: List<Problem>,
+    private val onCheckAnswersClick: () -> Unit,
+    private val onFinishQuizClick: () -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_PROBLEM = 0
     private val TYPE_BUTTON = 1
@@ -103,11 +103,11 @@ class ProblemAdapter(private val problems: List<Problem>, private val onCheckAns
             }
 
             buttonHolder.saveProblemsButton.setOnClickListener {
-                saveProblemsToServer(holder)
+                showSaveDialog(holder)
             }
 
             buttonHolder.finishQuizButton.setOnClickListener {
-                // Handle the "Finish Quiz" button click here
+                showFinishQuizDialog(holder)
             }
         }
     }
@@ -132,7 +132,32 @@ class ProblemAdapter(private val problems: List<Problem>, private val onCheckAns
         notifyDataSetChanged()
     }
 
-    private fun saveProblemsToServer(holder: RecyclerView.ViewHolder) {
+    private fun showSaveDialog(holder: RecyclerView.ViewHolder) {
+        val context = holder.itemView.context
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_save_exam, null)
+        val editTextExamName = dialogView.findViewById<EditText>(R.id.editTextExamName)
+
+        val dialogBuilder = AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setTitle("폴더 이름을 입력하시오")
+            .setPositiveButton("저장") { dialog, _ ->
+                val examName = editTextExamName.text.toString()
+                if (examName.isNotEmpty()) {
+                    saveProblemsToServer(holder, examName)
+                } else {
+                    Toast.makeText(context, "폴더 이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("취소") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+    }
+
+    private fun saveProblemsToServer(holder: RecyclerView.ViewHolder, examName: String) {
         val context = holder.itemView.context
         val sharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", null)
@@ -153,7 +178,7 @@ class ProblemAdapter(private val problems: List<Problem>, private val onCheckAns
                 answer = problem.answerIndex.toString()
             )
         }
-        val examData = ExamData(username, problemData)
+        val examData = ExamData(username, examName, problemData)
 
         RetrofitClient.apiService.saveExam(examData).enqueue(object : Callback<SaveExamResponse> {
             override fun onResponse(call: Call<SaveExamResponse>, response: Response<SaveExamResponse>) {
@@ -168,5 +193,18 @@ class ProblemAdapter(private val problems: List<Problem>, private val onCheckAns
                 Toast.makeText(holder.itemView.context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun showFinishQuizDialog(holder: RecyclerView.ViewHolder) {
+        val context = holder.itemView.context
+        val builder = AlertDialog.Builder(context)
+        builder.setMessage("풀이를 끝내겠습니까?")
+            .setPositiveButton("예") { _, _ ->
+                onFinishQuizClick()
+            }
+            .setNegativeButton("아니오") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create().show()
     }
 }

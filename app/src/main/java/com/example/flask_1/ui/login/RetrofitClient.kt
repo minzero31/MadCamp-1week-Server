@@ -14,16 +14,22 @@ object RetrofitClient {
         setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(logging)
         .connectTimeout(60, TimeUnit.SECONDS) // 연결 타임아웃 설정
         .writeTimeout(60, TimeUnit.SECONDS)   // 쓰기 타임아웃 설정
         .readTimeout(60, TimeUnit.SECONDS)    // 읽기 타임아웃 설정
+        .addInterceptor(loggingInterceptor)
         .build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

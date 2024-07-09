@@ -1,5 +1,5 @@
-// GalleryFragment.kt
-package com.example.flask_1.ui.gallery
+// MyProbFragment.kt
+package com.example.flask_1.ui.myprob
 
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.R
-import com.example.flask_1.databinding.FragmentGalleryBinding
+import com.example.flask_1.databinding.FragmentMyProbBinding
 import com.example.flask_1.ui.login.Exam
 import com.example.flask_1.ui.login.RetrofitClient
 import com.example.week2test.ui.gallery.RecyclerAdapter
@@ -20,39 +20,30 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GalleryFragment : Fragment() {
+class MyProbFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private var _binding: FragmentMyProbBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecyclerAdapter
     private val examList = arrayListOf<Exam>()
-    private val filteredList = arrayListOf<Exam>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel = ViewModelProvider(this).get(GalleryViewModel::class.java)
-
-        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        _binding = FragmentMyProbBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // RecyclerView 설정
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = RecyclerAdapter(filteredList, R.id.action_galleryFragment_to_solvingFragment) // 네비게이션 액션 ID를 전달합니다.
+        adapter = RecyclerAdapter(examList, R.id.action_myProbFragment_to_solvingFragment) // 네비게이션 액션 ID를 전달합니다.
         recyclerView.adapter = adapter
 
         // 사용자 데이터 로드
         loadExamData()
-
-        // 검색 기능 설정
-        binding.searchButton.setOnClickListener {
-            val searchText = binding.searchEditText.text.toString()
-            filterList(searchText)
-        }
 
         return root
     }
@@ -61,13 +52,13 @@ class GalleryFragment : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "") ?: return
 
-        RetrofitClient.apiService.getExams(mapOf("username" to username)).enqueue(object : Callback<List<Exam>> {
+        RetrofitClient.apiService.getMyExams(mapOf("username" to username)).enqueue(object : Callback<List<Exam>> {
             override fun onResponse(call: Call<List<Exam>>, response: Response<List<Exam>>) {
                 if (response.isSuccessful) {
                     response.body()?.let { exams ->
                         examList.clear()
                         examList.addAll(exams)
-                        filterList("")
+                        adapter.notifyDataSetChanged()
                     }
                 } else {
                     Toast.makeText(context, "Failed to load exam data", Toast.LENGTH_SHORT).show()
@@ -78,20 +69,6 @@ class GalleryFragment : Fragment() {
                 Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-    private fun filterList(searchText: String) {
-        filteredList.clear()
-        if (searchText.isEmpty()) {
-            filteredList.addAll(examList)
-        } else {
-            for (exam in examList) {
-                if (exam.exam_name.contains(searchText, ignoreCase = true)) {
-                    filteredList.add(exam)
-                }
-            }
-        }
-        adapter.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {

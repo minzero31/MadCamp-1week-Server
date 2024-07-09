@@ -1,34 +1,40 @@
-package com.example.navigation.ui.problem
+package com.example.navigation.ui.solving
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.R
-import android.app.AlertDialog
+import com.example.navigation.ui.problem.Problem
+import com.example.navigation.ui.problem.ProblemAdapter
 
-class ProblemFragment : Fragment() {
+class SolvingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_problem, container, false)
-        val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view)
+        // Inflate the layout for this fragment
+        val root = inflater.inflate(R.layout.fragment_solving, container, false)
 
+        // Initialize RecyclerView
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Get data from arguments
+        val examName = arguments?.getString("exam_name")
         val questions = arguments?.getStringArrayList("questions") ?: arrayListOf()
         val options = arguments?.getSerializable("options") as? ArrayList<ArrayList<String>> ?: arrayListOf()
         val answers = arguments?.getStringArrayList("answers") ?: arrayListOf()
 
-        // Log data to ensure it's correct
-        Log.d("ProblemFragment", "Questions: $questions")
-        Log.d("ProblemFragment", "Options: $options")
-        Log.d("ProblemFragment", "Answers: $answers")
+        // Set exam name
+        val examNameTextView = root.findViewById<TextView>(R.id.text_exam_name)
+        examNameTextView.text = examName
 
         // Convert answers to Integer list
         val intAnswers = answers.mapNotNull { it.toIntOrNull() }
@@ -44,10 +50,9 @@ class ProblemFragment : Fragment() {
         val adapter = ProblemAdapter(problems, {
             // Handle the "Check Answers" button click here
         }, {
-            findNavController().navigate(R.id.action_problemFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_solvingFragment_to_homeFragment)
         })
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
         return root

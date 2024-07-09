@@ -1,6 +1,7 @@
 package com.example.flask_1.ui.slideshow
 
-import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.flask_1.R
-import com.example.flask_1.databinding.FragmentSlideshowBinding
 import com.example.flask_1.databinding.DialogLogoutConfirmationBinding
+import com.example.flask_1.databinding.FragmentSlideshowBinding
+import com.example.flask_1.ui.login.LoginActivity
 
 class SlideshowFragment : Fragment() {
 
@@ -48,27 +52,43 @@ class SlideshowFragment : Fragment() {
     private fun showConfirmationDialog(message: String) {
         val dialogBinding = DialogLogoutConfirmationBinding.inflate(LayoutInflater.from(context))
 
-        val builder = AlertDialog.Builder(context)
+        val builder = AlertDialog.Builder(requireContext())
         builder.setView(dialogBinding.root)
 
         dialogBinding.dialogMessage.text = message
 
+        val dialog = builder.create()
+
         dialogBinding.dialogButtonYes.setOnClickListener {
-            // TODO: "예" 버튼 클릭 시의 동작 정의
-            dialogBinding.root.parent?.let {
-                (it as? AlertDialog)?.dismiss()
+            if (message.contains("로그아웃")) {
+                handleLogout()
+            } else if (message.contains("내가 만든 퀴즈를 보러가시겠습니까?")) {
+                findNavController().navigate(R.id.action_slideshowFragment_to_myProbFragment)
             }
+            dialog.dismiss()
         }
 
         dialogBinding.dialogButtonNo.setOnClickListener {
-            // 다이얼로그 닫기
-            dialogBinding.root.parent?.let {
-                (it as? AlertDialog)?.dismiss()
-            }
+            dialog.dismiss()
         }
 
-        val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun handleLogout() {
+        // 세션 정보 초기화
+        clearSession()
+
+        // 로그인 화면으로 이동
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun clearSession() {
+        // SharedPreferences를 사용하여 세션 정보를 초기화합니다.
+        val sharedPref = activity?.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        sharedPref?.edit()?.clear()?.apply()
     }
 
     override fun onDestroyView() {
