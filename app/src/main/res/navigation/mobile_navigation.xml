@@ -6,6 +6,16 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/ProblemFragment"
+        android:name="com.example.navigation.ui.problem.ProblemFragment"
+        android:label="ProblemFragment">
+        <action
+            android:id="@+id/action_problemFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.example.flask_1.ui.home.HomeFragment"
         android:label="@string/menu_home"
