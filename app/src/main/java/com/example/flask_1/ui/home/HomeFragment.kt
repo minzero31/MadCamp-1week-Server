@@ -43,6 +43,6 @@ class HomeFragment : Fragment() {
 
     private fun getMyQuestions(): List<String> {
         // 여기에 실제 데이터 로직을 추가하세요
-        return listOf("Question 1", "Question 2", "Question 3")
+        return listOf("객체지향프로그래밍dndkhdkhdkhd", "데이터구조", "Question 3", "Question 4", "Question 5", "Question 6")
     }
 }
