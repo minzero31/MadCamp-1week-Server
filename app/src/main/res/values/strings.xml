@@ -11,4 +11,5 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="add_icon_desc">Create Problems</string>
+    <string name="question_image_desc">Question Image</string>
 </resources>
