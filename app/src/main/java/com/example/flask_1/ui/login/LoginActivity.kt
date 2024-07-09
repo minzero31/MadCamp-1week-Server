@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
                                 if (rememberMe) {
                                     saveCredentials(username, password)
                                 }
+                                saveUsername(username)
                                 navigateToHomeActivity()
                             }
                         } else {
@@ -91,6 +92,7 @@ class LoginActivity : AppCompatActivity() {
                         val loginResponse = response.body()
                         if (loginResponse != null) {
                             Toast.makeText(this@LoginActivity, loginResponse.message, Toast.LENGTH_LONG).show()
+                            saveUsername(savedUsername)
                             navigateToHomeActivity()
                         }
                     } else {
@@ -110,6 +112,14 @@ class LoginActivity : AppCompatActivity() {
         with(sharedPreferences.edit()) {
             putString("username", username)
             putString("password", password)
+            apply()
+        }
+    }
+
+    private fun saveUsername(username: String) {
+        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("username", username)
             apply()
         }
     }

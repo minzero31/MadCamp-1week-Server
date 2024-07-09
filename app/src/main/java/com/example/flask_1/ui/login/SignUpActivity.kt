@@ -2,11 +2,11 @@ package com.example.flask_1.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.flask_1.MainActivity
 import com.example.flask_1.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,15 +42,20 @@ class SignUpActivity : AppCompatActivity() {
                                 val signupResponse = response.body()
                                 if (signupResponse != null) {
                                     Toast.makeText(this@SignUpActivity, signupResponse.message, Toast.LENGTH_LONG).show()
-                                    navigateToLoginActivity()
+                                    if (signupResponse.message.contains("Signup successful")) {
+                                        navigateToLoginActivity()
+                                    }
                                 }
                             } else {
-                                Toast.makeText(this@SignUpActivity, "Signup failed: ${response.message()}", Toast.LENGTH_LONG).show()
+                                val errorBody = response.errorBody()?.string()
+                                Toast.makeText(this@SignUpActivity, "Signup failed: ${response.message()} - $errorBody", Toast.LENGTH_LONG).show()
+                                Log.e("SignUpActivity", "Signup failed: ${response.message()} - $errorBody")
                             }
                         }
 
                         override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
                             Toast.makeText(this@SignUpActivity, "Signup failed: ${t.message}", Toast.LENGTH_LONG).show()
+                            Log.e("SignUpActivity", "Signup failed", t)
                         }
                     })
                 } else {
@@ -63,7 +68,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun navigateToLoginActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()  // Optionally finish SignUpActivity to prevent going back to it
     }

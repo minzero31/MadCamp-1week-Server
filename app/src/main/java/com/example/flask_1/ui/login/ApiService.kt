@@ -15,4 +15,10 @@ interface ApiService {
 
     @POST("/upload_image")
     fun uploadImage(@Body base64Image: RequestBody): Call<OcrResponse>
+
+    @POST("/save_exam")
+    fun saveExam(@Body examData: ExamData): Call<SaveExamResponse>
 }
+
+
+
