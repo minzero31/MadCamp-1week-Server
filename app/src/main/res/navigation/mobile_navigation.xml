@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_uploadImgFragment"
             app:destination="@id/uploadImgFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_solvingFragment"
+            app:destination="@id/solvingFragment" />
     </fragment>
 
     <fragment

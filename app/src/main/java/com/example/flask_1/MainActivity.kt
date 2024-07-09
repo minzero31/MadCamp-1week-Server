@@ -2,6 +2,8 @@ package com.example.flask_1
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,7 +14,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.flask_1.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -38,12 +40,26 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Retrieve user details from SharedPreferences
+        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", "User Name")
+        val email = sharedPreferences.getString("email", "user@example.com")
+
+        // Retrieve the header view
+        val headerView: View = navView.getHeaderView(0)
+
+        // Retrieve TextViews and set user details
+        val navHeaderTitle: TextView = headerView.findViewById(R.id.nav_header_title)
+        val navHeaderSubtitle: TextView = headerView.findViewById(R.id.nav_header_subtitle)
+
+        navHeaderTitle.text = username
+        navHeaderSubtitle.text = email
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
+        // Do not inflate the menu; this removes the right-top button
+        return false
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -59,6 +75,5 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
-
 }
+

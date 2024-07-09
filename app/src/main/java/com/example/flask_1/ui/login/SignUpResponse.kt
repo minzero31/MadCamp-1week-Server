@@ -3,7 +3,7 @@ package com.example.flask_1.ui.login
 import java.io.Serializable
 
 data class LoginRequest(val username: String, val password: String)
-data class LoginResponse(val message: String)
+data class LoginResponse(val message: String, val username: String, val email: String)
 data class SignUpRequest(val username: String, val email: String, val password: String)
 data class SignUpResponse(val message: String)
 data class OcrResponse(val ocrText: String, val questions: List<String>, val options: List<List<String>>, val answers: List<String>)
