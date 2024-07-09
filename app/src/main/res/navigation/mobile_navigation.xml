@@ -14,7 +14,6 @@
             app:destination="@id/nav_home" />
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.flask_1.ui.home.HomeFragment"
@@ -46,17 +45,49 @@
     <fragment
         android:id="@+id/problemFragment"
         android:name="com.example.navigation.ui.problem.ProblemFragment"
-        android:label="ProblemFragment" />
+        android:label="ProblemFragment">
+        <action
+            android:id="@+id/action_problemFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/solvingFragment"
+        android:name="com.example.navigation.ui.solving.SolvingFragment"
+        android:label="SolvingFragment">
+        <action
+            android:id="@+id/action_solvingFragment_to_homeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.flask_1.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_solvingFragment"
+            app:destination="@id/solvingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.flask_1.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_slideshowFragment_to_myProbFragment"
+            app:destination="@id/myProbFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myProbFragment"
+        android:name="com.example.flask_1.ui.myprob.MyProbFragment"
+        android:label="MyProbFragment"
+        tools:layout="@layout/fragment_my_prob">
+        <action
+            android:id="@+id/action_myProbFragment_to_solvingFragment"
+            app:destination="@id/solvingFragment" />
+    </fragment>
+
 </navigation>

@@ -6,12 +6,12 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/dialogMessage"
+        android:id="@+id/dialog_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="내용을 입력하세요."
+        android:text="Message"
         android:textSize="18sp"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,16 +20,16 @@
         android:gravity="end">
 
         <Button
-            android:id="@+id/dialogButtonYes"
+            android:id="@+id/dialog_button_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="네"/>
+            android:text="네" />
 
         <Button
-            android:id="@+id/dialogButtonNo"
+            android:id="@+id/dialog_button_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="아니오"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp" />
     </LinearLayout>
 </LinearLayout>
