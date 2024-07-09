@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.flask_1.R
 import com.example.flask_1.databinding.FragmentGalleryBinding
+import com.example.flask_1.ui.gallery.RecyclerAdapter
 
 class GalleryFragment : Fragment() {
 
@@ -19,6 +19,7 @@ class GalleryFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecyclerAdapter
     private val userList = arrayListOf<Users>()
+    private val filteredList = arrayListOf<Users>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,22 +36,45 @@ class GalleryFragment : Fragment() {
         // RecyclerView 설정
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = RecyclerAdapter(userList)
+        adapter = RecyclerAdapter(filteredList)
         recyclerView.adapter = adapter
+
+        // 검색 기능 설정
+        binding.searchButton.setOnClickListener {
+            val searchText = binding.searchEditText.text.toString()
+            filterList(searchText)
+        }
+
+        // RecyclerView 초기화
+        filterList("")
 
         return root
     }
 
     private fun initializeData() {
-        userList.add(Users("Name1", "email1@example.com", "Content1"))
-        userList.add(Users("Name2", "email2@example.com", "Content2"))
-        userList.add(Users("Name3", "email3@example.com", "Content3"))
-        userList.add(Users("Name4", "email3@example.com", "Content4"))
-        userList.add(Users("Name5", "email3@example.com", "Content5"))
-        userList.add(Users("Name6", "email3@example.com", "Content6"))
-        userList.add(Users("Name7", "email3@example.com", "Content7"))
-        userList.add(Users("Name8", "email3@example.com", "Content8"))
+        userList.add(Users("데이터구조", "email1@example.com"))
+        userList.add(Users("컴퓨터 아키텍처", "email2@example.com"))
+        userList.add(Users("한국사", "email3@example.com"))
+        userList.add(Users("사랑과 헌법", "email3@example.com"))
+        userList.add(Users("비만의 생물학", "email3@example.com"))
+        userList.add(Users("영교필", "email3@example.com"))
+        userList.add(Users("프로그래밍입문", "email3@example.com"))
+        userList.add(Users("객체지향", "email3@example.com"))
         // Add more data as needed
+    }
+
+    private fun filterList(searchText: String) {
+        filteredList.clear()
+        if (searchText.isEmpty()) {
+            filteredList.addAll(userList)
+        } else {
+            for (user in userList) {
+                if (user.name.contains(searchText, ignoreCase = true)) {
+                    filteredList.add(user)
+                }
+            }
+        }
+        adapter.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {
