@@ -1,5 +1,6 @@
 package com.example.flask_1.ui.slideshow
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.flask_1.R
 import com.example.flask_1.databinding.FragmentSlideshowBinding
+import com.example.flask_1.databinding.DialogLogoutConfirmationBinding
 
 class SlideshowFragment : Fragment() {
 
@@ -33,14 +35,40 @@ class SlideshowFragment : Fragment() {
 
         // Set any specific properties or listeners
         btnViewMyQuestions.setOnClickListener {
-            // Handle "내가 만든 문제 보러 가기" button click
+            showConfirmationDialog("내가 만든 퀴즈를 보러가시겠습니까?")
         }
 
         btnLogout.setOnClickListener {
-            // Handle "로그아웃" button click
+            showConfirmationDialog("로그아웃 하시겠습니까?")
         }
 
         return root
+    }
+
+    private fun showConfirmationDialog(message: String) {
+        val dialogBinding = DialogLogoutConfirmationBinding.inflate(LayoutInflater.from(context))
+
+        val builder = AlertDialog.Builder(context)
+        builder.setView(dialogBinding.root)
+
+        dialogBinding.dialogMessage.text = message
+
+        dialogBinding.dialogButtonYes.setOnClickListener {
+            // TODO: "예" 버튼 클릭 시의 동작 정의
+            dialogBinding.root.parent?.let {
+                (it as? AlertDialog)?.dismiss()
+            }
+        }
+
+        dialogBinding.dialogButtonNo.setOnClickListener {
+            // 다이얼로그 닫기
+            dialogBinding.root.parent?.let {
+                (it as? AlertDialog)?.dismiss()
+            }
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 
     override fun onDestroyView() {
