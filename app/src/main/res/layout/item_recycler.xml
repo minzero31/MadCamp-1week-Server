@@ -28,7 +28,7 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/ic_quiz_main" />
 
                 <TextView
                     android:id="@+id/name_tv"
