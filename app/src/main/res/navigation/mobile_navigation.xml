@@ -84,6 +84,17 @@
     </fragment>
 
     <fragment
+        android:id="@+id/slideshowFragment"
+        android:name="com.example.flask_1.ui.slideshow.SlideshowFragment"
+        android:label="fragment_slideshow"
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_slideshowFragment_to_myProbFragment"
+            app:destination="@id/myProbFragment" />
+    </fragment>
+
+
+    <fragment
         android:id="@+id/myProbFragment"
         android:name="com.example.flask_1.ui.myprob.MyProbFragment"
         android:label="MyProbFragment"

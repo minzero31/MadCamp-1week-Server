@@ -1,5 +1,6 @@
 package com.example.navigation.ui.solving
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,11 @@ class SolvingFragment : Fragment() {
         val questions = arguments?.getStringArrayList("questions") ?: arrayListOf()
         val options = arguments?.getSerializable("options") as? ArrayList<ArrayList<String>> ?: arrayListOf()
         val answers = arguments?.getStringArrayList("answers") ?: arrayListOf()
+        val examUsername = arguments?.getString("exam_username") // Add this line
+
+        // Get current user's username from SharedPreferences
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val currentUsername = sharedPreferences.getString("username", "") ?: ""
 
         // Set exam name
         val examNameTextView = root.findViewById<TextView>(R.id.text_exam_name)
@@ -47,7 +53,8 @@ class SolvingFragment : Fragment() {
             )
         }
 
-        val adapter = ProblemAdapter(problems, {
+        // Pass examUsername to the adapter and set visibility of save button based on usernames
+        val adapter = ProblemAdapter(problems, currentUsername, examUsername ?: "", {
             // Handle the "Check Answers" button click here
         }, {
             findNavController().navigate(R.id.action_solvingFragment_to_homeFragment)

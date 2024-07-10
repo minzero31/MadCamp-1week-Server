@@ -1,4 +1,3 @@
-// MyProbFragment.kt
 package com.example.flask_1.ui.myprob
 
 import android.content.Context
@@ -8,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.R
 import com.example.flask_1.databinding.FragmentMyProbBinding
 import com.example.flask_1.ui.login.Exam
 import com.example.flask_1.ui.login.RetrofitClient
-import com.example.week2test.ui.gallery.RecyclerAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +23,7 @@ class MyProbFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: RecyclerAdapter
+    private lateinit var adapter: MyProbAdapter
     private val examList = arrayListOf<Exam>()
 
     override fun onCreateView(
@@ -37,9 +34,9 @@ class MyProbFragment : Fragment() {
         val root: View = binding.root
 
         // RecyclerView 설정
-        recyclerView = binding.recyclerView
+        recyclerView = binding.recyclerViewMyProb
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = RecyclerAdapter(examList, R.id.action_myProbFragment_to_solvingFragment) // 네비게이션 액션 ID를 전달합니다.
+        adapter = MyProbAdapter(examList, R.id.action_myProbFragment_to_solvingFragment) // 네비게이션 액션 ID를 전달합니다.
         recyclerView.adapter = adapter
 
         // 사용자 데이터 로드
