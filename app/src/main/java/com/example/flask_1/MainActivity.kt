@@ -3,7 +3,6 @@ package com.example.flask_1
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -42,16 +41,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Inflate custom layout for toolbar
-        val customView = layoutInflater.inflate(R.layout.custom_toolbar, null)
-        binding.appBarMain.toolbar.addView(customView)
-
-        val toolbarTitle = customView.findViewById<TextView>(R.id.toolbar_title)
-        val toolbarIcon = customView.findViewById<ImageView>(R.id.toolbar_icon)
-
-        // Optionally, set image resource
-        toolbarIcon.setImageResource(R.drawable.ic_title)  // 원하는 이미지 리소스 설정
-
         // Retrieve user details from SharedPreferences
         val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "User Name")
@@ -87,3 +76,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
