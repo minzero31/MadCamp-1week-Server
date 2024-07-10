@@ -8,6 +8,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.flask_1.R
+import pl.droidsonroids.gif.GifDrawable
+import pl.droidsonroids.gif.GifImageView
 
 class LoadingFragment : Fragment() {
 
@@ -30,7 +32,18 @@ class LoadingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_loading, container, false)
+        val root = inflater.inflate(R.layout.fragment_loading, container, false)
+
+        // Use GifDrawable to load GIF
+        val gifImageView = root.findViewById<GifImageView>(R.id.gif_image_view)
+        val gifDrawable = GifDrawable(resources, R.drawable.ic_loading_leaves)
+
+        // Adjust GIF speed by modifying the loop count and frame duration
+        gifDrawable.setSpeed(2.0f) // Speed up the GIF by 2 times
+
+        gifImageView.setImageDrawable(gifDrawable)
+
+        return root
     }
 
     override fun onResume() {
@@ -48,3 +61,4 @@ class LoadingFragment : Fragment() {
         callback.remove()
     }
 }
+
