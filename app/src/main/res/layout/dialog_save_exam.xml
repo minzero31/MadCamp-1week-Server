@@ -9,6 +9,6 @@
         android:id="@+id/editTextExamName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="폴더 이름을 입력하세요" />
+        android:hint="문제 제목을 입력하세요" />
 
 </LinearLayout>

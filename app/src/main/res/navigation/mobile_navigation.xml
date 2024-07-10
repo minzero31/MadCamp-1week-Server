@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/uploadImgFragment"
         android:name="com.example.flask_1.ui.upload.UploadImgFragment"
-        android:label="UploadImgFragment" >
+        android:label="나만의 고사리 만들기" >
         <action
             android:id="@+id/action_uploadImgFragment_to_loadingFragment"
             app:destination="@id/loadingFragment" />
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/loadingFragment"
         android:name="com.example.navigation.ui.loading.LoadingFragment"
-        android:label="LoadingFragment" >
+        android:label="나만의 고사리 만들기" >
         <action
             android:id="@+id/action_loadingFragment_to_problemFragment"
             app:destination="@id/problemFragment" />
@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/problemFragment"
         android:name="com.example.navigation.ui.problem.ProblemFragment"
-        android:label="ProblemFragment">
+        android:label="고사리">
         <action
             android:id="@+id/action_problemFragment_to_homeFragment"
             app:destination="@id/nav_home" />
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/solvingFragment"
         android:name="com.example.navigation.ui.solving.SolvingFragment"
-        android:label="SolvingFragment">
+        android:label="고사리">
         <action
             android:id="@+id/action_solvingFragment_to_homeFragment"
             app:destination="@id/nav_home" />
@@ -86,7 +86,7 @@
     <fragment
         android:id="@+id/myProbFragment"
         android:name="com.example.flask_1.ui.myprob.MyProbFragment"
-        android:label="MyProbFragment"
+        android:label="고사리"
         tools:layout="@layout/fragment_my_prob">
         <action
             android:id="@+id/action_myProbFragment_to_solvingFragment"

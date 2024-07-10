@@ -76,6 +76,7 @@ class UploadImgFragment : Fragment() {
         if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             imageUri = data.data
             imgUploaded.setImageURI(imageUri)
+            imgUploaded.visibility = View.VISIBLE // Show uploaded image
             btnConvertOcr.visibility = View.VISIBLE // Show OCR button after image is selected
         }
     }

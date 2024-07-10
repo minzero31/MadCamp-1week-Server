@@ -3,7 +3,7 @@
     <solid android:color="#FFFFFF" />
     <stroke
         android:width="2dp"
-        android:color="#FF4081" /> <!-- Highlight color -->
+        android:color="@color/deep_green" /> <!-- Highlight color -->
     <corners android:radius="16dp" />
     <padding
         android:left="10dp"
