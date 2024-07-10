@@ -7,27 +7,25 @@
     android:layout_height="match_parent"
     tools:context="com.example.navigation.ui.loading.LoadingFragment">
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:progressTint="@color/deeper_green"
-        app:layout_constraintBottom_toTopOf="@+id/text_ai_message"
-        app:layout_constraintEnd_toEndOf="parent"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_loading_leaves"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/text_ai_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="AI가 문제를 생성하는 중입니다.\n잠시만 기다려주세요!"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/gif_image_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
-
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme -->
     <style name="Theme.Flask_1" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/deep_green</item>
         <item name="colorPrimaryDark">@color/deep_green</item>
         <item name="colorAccent">@color/menta</item>
+        <item name="android:fontFamily">@font/laundrygothic_bold</item>
     </style>
 
     <!-- No Action Bar Theme -->
     <style name="Theme.Flask_1.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/deep_green</item>
         <item name="colorPrimaryDark">@color/deep_green</item>
+        <item name="android:fontFamily">@font/laundrygothic_bold</item>
         <item name="colorAccent">@color/deep_green</item>
     </style>
 
@@ -25,10 +26,22 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:fontFamily">@font/laundrygothic_bold</item>
     </style>
 
     <style name="Theme.Navigation.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
     </style>
     <style name="Theme.Navigation.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+    </style>
+
+    <!-- Custom Toolbar Style -->
+    <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/CustomToolbarTitleText</item>
+    </style>
+
+    <style name="CustomToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/laundrygothic_bold</item> <!-- 커스텀 폰트 적용 -->
     </style>
 </resources>
