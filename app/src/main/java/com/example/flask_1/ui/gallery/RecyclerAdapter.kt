@@ -1,4 +1,3 @@
-// RecyclerAdapter.kt
 package com.example.week2test.ui.gallery
 
 import android.app.AlertDialog

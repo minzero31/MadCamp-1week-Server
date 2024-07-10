@@ -19,6 +19,8 @@ import retrofit2.Response
 
 class ProblemAdapter(
     private val problems: List<Problem>,
+    private val currentUsername: String,
+    private val examUsername: String,
     private val onCheckAnswersClick: () -> Unit,
     private val onFinishQuizClick: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -94,7 +96,7 @@ class ProblemAdapter(
         } else {
             val buttonHolder = holder as ButtonViewHolder
             buttonHolder.checkAnswersButton.visibility = if (showResults) View.GONE else View.VISIBLE
-            buttonHolder.saveProblemsButton.visibility = if (showResults) View.VISIBLE else View.GONE
+            buttonHolder.saveProblemsButton.visibility = if (showResults && currentUsername != examUsername) View.VISIBLE else View.GONE
             buttonHolder.finishQuizButton.visibility = if (showResults) View.VISIBLE else View.GONE
 
             buttonHolder.checkAnswersButton.setOnClickListener {

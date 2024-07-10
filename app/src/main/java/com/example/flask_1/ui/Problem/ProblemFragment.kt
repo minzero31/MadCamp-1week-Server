@@ -1,7 +1,7 @@
 package com.example.navigation.ui.problem
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flask_1.R
-import android.app.AlertDialog
 
 class ProblemFragment : Fragment() {
 
@@ -24,11 +23,11 @@ class ProblemFragment : Fragment() {
         val questions = arguments?.getStringArrayList("questions") ?: arrayListOf()
         val options = arguments?.getSerializable("options") as? ArrayList<ArrayList<String>> ?: arrayListOf()
         val answers = arguments?.getStringArrayList("answers") ?: arrayListOf()
+        val examUsername = arguments?.getString("exam_username") ?: ""
 
-        // Log data to ensure it's correct
-        Log.d("ProblemFragment", "Questions: $questions")
-        Log.d("ProblemFragment", "Options: $options")
-        Log.d("ProblemFragment", "Answers: $answers")
+        // Get current user's username from SharedPreferences
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val currentUsername = sharedPreferences.getString("username", "") ?: ""
 
         // Convert answers to Integer list
         val intAnswers = answers.mapNotNull { it.toIntOrNull() }
@@ -41,7 +40,7 @@ class ProblemFragment : Fragment() {
             )
         }
 
-        val adapter = ProblemAdapter(problems, {
+        val adapter = ProblemAdapter(problems, currentUsername, examUsername, {
             // Handle the "Check Answers" button click here
         }, {
             findNavController().navigate(R.id.action_problemFragment_to_homeFragment)

@@ -20,7 +20,8 @@ data class ProblemData(
 data class SaveExamResponse(val message: String)
 data class Exam(
     val exam_name: String,
-    val questions: ArrayList<String> = ArrayList(),
-    val options: ArrayList<ArrayList<String>> = ArrayList(),
-    val answers: ArrayList<String> = ArrayList()
+    val questions: List<String>,
+    val options: List<List<String>>,
+    val answers: List<String>,
+    val username: String // Add this line
 ) : Serializable
