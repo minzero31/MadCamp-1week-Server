@@ -17,10 +17,10 @@
             android:id="@+id/image_question"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/question_image_desc"
-            android:src="@drawable/ic_main_test" />
+            android:src="@drawable/ic_quiz_main" />
 
         <TextView
             android:id="@+id/text_question"

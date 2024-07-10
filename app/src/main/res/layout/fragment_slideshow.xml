@@ -26,9 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingBottom="8dp"
+                android:paddingBottom="12dp"
                 android:text="나의 정보"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -37,13 +37,13 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:paddingBottom="16dp"
-                android:src="@drawable/ic_user_icon" />
+                android:src="@drawable/ic_user_sprout" />
 
             <TextView
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
+                android:paddingTop="18dp"
                 android:paddingBottom="4dp"
                 android:text="아이디: 우하하하하하하"
                 android:textSize="20sp" />
@@ -61,23 +61,28 @@
 
     <Button
         android:id="@+id/btn_view_my_questions"
-        android:layout_width="match_parent"
+        android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/card_view"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/rounded_button"
-        android:text="내가 만든 문제 보러 가기"
-        android:textColor="@android:color/black"
-        android:elevation="4dp"/>
+        android:elevation="4dp"
+        android:text="나의 문제 보러 가기"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_view_my_questions"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/card_view"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_toStartOf="@id/btn_view_my_questions"
         android:background="@drawable/rounded_button"
+        android:elevation="4dp"
         android:text="로그아웃"
-        android:textColor="@android:color/black"
-        android:elevation="4dp"/>
+        android:textColor="@android:color/black" />
+
 </RelativeLayout>
